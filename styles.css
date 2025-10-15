@@ -1,0 +1,73 @@
+/* Page base styles */
+html, body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Comic Sans MS', 'Comic Neue', 'Segoe UI', cursive, sans-serif;
+}
+
+/* Make the checkerboard background move and stuff */
+body {
+	background-image: url("Images/checkerboard.png");
+	background-repeat: repeat;
+	background-position: 0 0;
+	/* Keep content readable on top */
+	color: #111;
+	/* This makes it infinite */
+	animation: move-bg 8s linear infinite;
+}
+
+/* I HOPE this will make it stop for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	body {
+		animation: none;
+	}
+}
+
+/* shift background position to negative offsets so it appears to move up and left */
+@keyframes move-bg {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -200px -200px;
+	}
+}
+
+/* light page wrapper so text doesn't stick to edges */
+.page-wrap {
+	max-width: 900px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background: rgba(255,255,255,0.8);
+	border-radius: 8px;
+}
+
+a { color: #0366d6; }
+
+/* button style for the links blblblb */
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	background: linear-gradient(180deg,#fff,#e6e6e6);
+	color: #111;
+	padding: 0.5rem 1rem;
+	margin: 0.25rem 0;
+	border-radius: 8px;
+	border: 1px solid rgba(0,0,0,0.15);
+	box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+	transform-origin: center;
+	transition: transform 150ms cubic-bezier(.2,.9,.3,1), box-shadow 150ms;
+}
+
+/* bulge effect on hover */
+.btn:hover,
+.btn:focus {
+	transform: scale(1.08);
+	box-shadow: 0 6px 10px rgba(0,0,0,0.12);
+}
+
+/* I didn't actually write these lines of code down below (I'm sorry) it should do something with wierd keyboards */
+.btn:focus {
+	outline: 3px solid rgba(3,102,214,0.15);
+	outline-offset: 3px;
+}
