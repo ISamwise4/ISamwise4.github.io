@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <button class="toggle-btn" id="theme-toggle" title="Toggle Light/Dark Mode">Dark</button>
     <div class="page-wrap">
         <header>
             <h1>Fanart</h1>
@@ -59,5 +60,24 @@
             <a class="btn" href="index.html">Home</a>
         </footer>
     </div>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            toggleBtn.textContent = 'Light';
+        } else {
+            toggleBtn.textContent = 'Dark';
+        }
+        
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            toggleBtn.textContent = isLight ? 'Light' : 'Dark';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+    </script>
 </body>
 </html>

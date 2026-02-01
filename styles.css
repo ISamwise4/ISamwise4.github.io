@@ -5,6 +5,29 @@ html, body {
 	font-family: 'Comic Sans MS', 'Comic Neue', 'Segoe UI', cursive, sans-serif;
 }
 
+/* CSS Variables for theming */
+:root {
+	--body-color: #ffffff;
+	--page-bg: rgba(58, 58, 58, 0.8);
+	--btn-bg: linear-gradient(180deg,#fff,#e6e6e6);
+	--btn-color: #111;
+	--btn-border: rgba(0,0,0,0.15);
+	--btn-shadow: rgba(0,0,0,0.06);
+	--btn-hover-shadow: rgba(0,0,0,0.12);
+	--btn-focus-outline: rgba(3,102,214,0.15);
+}
+
+.light-mode {
+	--body-color: #000000;
+	--page-bg: rgba(255, 255, 255, 0.8);
+	--btn-bg: linear-gradient(180deg,#ffffff,#e6e6e6);
+	--btn-color: #111;
+	--btn-border: rgba(0,0,0,0.15);
+	--btn-shadow: rgba(0,0,0,0.06);
+	--btn-hover-shadow: rgba(0,0,0,0.12);
+	--btn-focus-outline: rgba(3,102,214,0.5);
+}
+
 /* Make the checkerboard background move and stuff */
 body {
 	background-image: url("Images/checkerboard2.png");
@@ -12,9 +35,9 @@ body {
 	background-size: 600px 400px;
 	background-position: 0 0;
 	/* Keep content readable on top */
-	color: #111;
+	color: var(--body-color);
 	/* This makes it infinite */
-	animation: move-bg 60s linear infinite;
+	animation: move-bg 80s linear infinite;
 }
 
 /* I HOPE this will make it stop for reduced motion */
@@ -39,7 +62,7 @@ body {
 	max-width: 900px;
 	margin: 2rem auto;
 	padding: 2rem;
-	background: rgba(255,255,255,0.8);
+	background: var(--page-bg);
 	border-radius: 8px;
 }
 
@@ -49,13 +72,13 @@ a { color: #0366d6; }
 .btn {
 	display: inline-block;
 	text-decoration: none;
-	background: linear-gradient(180deg,#fff,#e6e6e6);
-	color: #111;
+	background: var(--btn-bg);
+	color: var(--btn-color);
 	padding: 0.5rem 1rem;
 	margin: 0.25rem 0;
 	border-radius: 8px;
-	border: 1px solid rgba(0,0,0,0.15);
-	box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+	border: 1px solid var(--btn-border);
+	box-shadow: 0 2px 0 var(--btn-shadow);
 	transform-origin: center;
 	transition: transform 150ms cubic-bezier(.2,.9,.3,1), box-shadow 150ms;
 }
@@ -64,11 +87,37 @@ a { color: #0366d6; }
 .btn:hover,
 .btn:focus {
 	transform: scale(1.08);
-	box-shadow: 0 6px 10px rgba(0,0,0,0.12);
+	box-shadow: 0 6px 10px var(--btn-hover-shadow);
 }
 
-/* I didn't actually write these lines of code down below (I'm sorry) it should do something with wierd keyboards */
 .btn:focus {
-	outline: 3px solid rgba(3,102,214,0.15);
+	outline: 3px solid var(--btn-focus-outline);
 	outline-offset: 3px;
+}
+
+/* Toggle button styles */
+.toggle-btn {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	background: var(--btn-bg);
+	color: var(--btn-color);
+	border: 1px solid var(--btn-border);
+	border-radius: 8px;
+	width: 100px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 18px;
+	font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 0 var(--btn-shadow);
+	transition: transform 150ms, box-shadow 150ms;
+	z-index: 1000;
+}
+
+.toggle-btn:hover {
+	transform: scale(1.1);
+	box-shadow: 0 4px 8px var(--btn-hover-shadow);
 }

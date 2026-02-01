@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <button class="toggle-btn" id="theme-toggle" title="Toggle Light/Dark Mode">Dark</button>
     <div class="page-wrap">
         <header>
             <h1>Samwise's Awesome Website (Not fake)</h1>
@@ -33,17 +34,39 @@
 
         <section>
             <h2>Website Pages</h2>
-            <a class="btn" href="about.html" target="_blank">About me</a>
-            <a class="btn" href="fanart.html" target="_blank">Fanart</a>
-        </section>
+            <div>
+                <a class="btn" href="about.html" target="_blank">About me</a>
+                </div>
+                <div>
+                <a class="btn" href="Fanart.html" target="_blank">Fanart</a>
+            </div>
+            </section>
         <section>
-            <h3>Games</h3>
+            <h2>Games</h2>
             <div>
                 <p>Coming Soon!</p>
             </div>
         </section>
 
     </div>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            toggleBtn.textContent = 'Light';
+        } else {
+            toggleBtn.textContent = 'Dark';
+        }
+        
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            toggleBtn.textContent = isLight ? 'Light' : 'Dark';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+    </script>
 </body>
-
 </html>
